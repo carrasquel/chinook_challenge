@@ -20,7 +20,7 @@
 
         <div class="footer">
             <%block name="footer">
-                this is the footer
+                Made with love by carrasquel
             </%block>
         </div>
     </main>

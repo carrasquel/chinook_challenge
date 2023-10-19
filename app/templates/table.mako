@@ -8,15 +8,30 @@
   	</header>
   	<div class="row py-3">
 		<div class="col-lg mx-auto">
-			<form id="my-form">
-				<input type="text" name="name" id="name">
-				<select id="gender" name="gender">
-					<option value="foo">Foo</option>
-					<option value="bar">Bar</option>
-					<option value="baz">Baz</option>
-				</select>
-				<input type="submit" />
-			</form>
+			<div class="card rounded shadow border-0">
+				<div class="card-body p-5 bg-white rounded">
+					<form id="my-form">
+						<span>Column</span>
+						<select id="column" name="filterColumn">
+							% for header in headers:
+								%if header == column:
+									<option value="${header}" selected>${header}</option>
+								%else:
+									<option value="${header}">${header}</option>
+								%endif
+							% endfor
+						</select>
+						<span>Value</span>
+						%if not value:
+							<input type="text" name="filterValue" id="value">
+						%else:
+							<input type="text" name="filterValue" id="value" value="${value}">
+						%endif
+						<input type="submit" class="btn btn-primary" />
+						<button type="button" class="btn btn-primary" id="clearButton">Clear</button>
+					</form>
+				</div>
+			</div>
 		</div>
 		<div class="col-lg mx-auto">
 			<div class="card rounded shadow border-0">
@@ -42,6 +57,24 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	const form = document.getElementById('my-form');
+
+	form.addEventListener('submit', (evt) => {
+		evt.preventDefault();
+		const formData = new FormData(form);
+		const params = new URLSearchParams(formData);
+		var url = "/customer?" + params.toString()
+		console.log(url.toString());
+		window.location.href = url;
+	});
+
+	document.getElementById("clearButton").onclick = function(e){
+		e.preventDefault();
+		window.location = "/customer";    
+	};
+</script>
 
 <%def name="makerow(row)">
     <tr>

@@ -13,10 +13,11 @@ from .dao import CustomerDAO
 
 
 @view_config(
+    renderer='app:templates/home.mako',
     route_name='home'
 )
 def home(request):
-    return Response('Welcome!')
+    return {}
 
 
 @view_config(
@@ -36,4 +37,9 @@ def customer_view(request):
     res = [CustomerDAO.to_dict(item) for item in res]
     headers = list(res[0].keys())
 
-    return {"rows": res, "headers": headers}
+    return {
+        "rows": res,
+        "headers": headers,
+        "column": filter_column,
+        "value": filter_value
+    }
