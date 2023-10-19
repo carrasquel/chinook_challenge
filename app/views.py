@@ -21,13 +21,13 @@ def home(request):
 
 
 @view_config(
-    renderer='app:templates/base.mak',
+    renderer='app:templates/table.mako',
     route_name='album'
 )
 def album_view(request):
-    limit = request.params['limit']
-    filter_column = request.params['filterColumn']
-    filter_value = request.params['filterValue']
+    limit = request.params.get("limit")
+    filter_column = request.params.get("filterColumn")
+    filter_value = request.params.get("filterValue")
 
     if limit:
         limit = int(limit)
@@ -36,13 +36,16 @@ def album_view(request):
         res = session.query(Album).limit(20).all()
     
     res = [to_dict(item) for item in res]
-    header = res[0].keys()
+    header = list(res[0].keys())
 
-    return {'rows': res, 'header': header}
+    print(header)
+    print(res)
+
+    return {"rows": res, "header": header}
 
 
 @view_config(
-    renderer='app:templates/table.mak',
+    renderer='app:templates/table.mako',
     route_name='artist'
 )
 def artist_view(request):
@@ -50,7 +53,7 @@ def artist_view(request):
 
 
 @view_config(
-    renderer='app:templates/base.mak',
+    renderer='app:templates/base.mako',
     route_name='customer'
 )
 def customer_view(request):
