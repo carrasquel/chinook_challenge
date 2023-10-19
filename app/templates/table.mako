@@ -8,6 +8,17 @@
   	</header>
   	<div class="row py-3">
 		<div class="col-lg mx-auto">
+			<form id="my-form">
+				<input type="text" name="name" id="name">
+				<select id="gender" name="gender">
+					<option value="foo">Foo</option>
+					<option value="bar">Bar</option>
+					<option value="baz">Baz</option>
+				</select>
+				<input type="submit" />
+			</form>
+		</div>
+		<div class="col-lg mx-auto">
 			<div class="card rounded shadow border-0">
 				<div class="card-body p-5 bg-white rounded">
 					<div class="table-responsive">
