@@ -15,6 +15,7 @@ def create_app():
     with Configurator() as config:
         config.add_route("home", "/")
         config.add_route("customer", "/customer")
+        config.add_route("employee", "/employee")
         config.scan("app.views")
         config.include("pyramid_mako")
         app = config.make_wsgi_app()

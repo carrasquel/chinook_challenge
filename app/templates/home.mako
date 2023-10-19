@@ -21,6 +21,11 @@
                         Customer Table
                     </a>
                 </li>
+                <li>
+                    <a href="/employee">
+                        Employee Table
+                    </a>
+                </li>
             </ul>
         </div>
     </main>

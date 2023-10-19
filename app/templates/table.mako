@@ -3,7 +3,11 @@
   	<header class="text-center">
 		<h1 class="display-4">Chinook Database</h1>
 		<p class="lead mb-0">
-			This is <b>Customer table</b> from Chinook Database
+			This is <b>${table} table</b> from Chinook Database
+		</p>
+		<br>
+		<p>
+			Our you go back <a href="/">Home</a>
 		</p>
   	</header>
   	<div class="row py-3">
@@ -65,14 +69,14 @@
 		evt.preventDefault();
 		const formData = new FormData(form);
 		const params = new URLSearchParams(formData);
-		var url = "/customer?" + params.toString()
+		var url = "/${table.lower()}?" + params.toString()
 		console.log(url.toString());
 		window.location.href = url;
 	});
 
 	document.getElementById("clearButton").onclick = function(e){
 		e.preventDefault();
-		window.location = "/customer";    
+		window.location = "/${table.lower()}";    
 	};
 </script>
 
