@@ -31,7 +31,10 @@
     <script>
       $(function() {
         $(document).ready(function() {
-          $('#example').DataTable();
+          $('#example').DataTable({
+            fixedHeader: true,
+            paging: false,
+          });
         });
       });
     </script>

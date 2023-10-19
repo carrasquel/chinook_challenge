@@ -16,8 +16,6 @@ def create_app():
     with Configurator() as config:
         config.add_route('home', '/')
         # config.add_route('hello', '/hello')
-        config.add_route('album', '/album')
-        config.add_route('artist', '/artist')
         config.add_route('customer', '/customer')
         config.scan('app.views')
         config.include('pyramid_mako')
