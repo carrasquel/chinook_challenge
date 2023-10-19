@@ -37,7 +37,7 @@ def customer_view(request):
         "headers": headers,
         "column": filter_column,
         "value": filter_value,
-        "table": "Customer"
+        "table": "Customer",
     }
 
 
@@ -63,5 +63,5 @@ def employee_view(request):
         "headers": headers,
         "column": filter_column,
         "value": filter_value,
-        "table": "Employee"
+        "table": "Employee",
     }

@@ -4,9 +4,8 @@ from app.dao import CustomerDAO, EmployeeDAO
 class TestCustomerDAO:
     def test_read_all_customers(self):
         customers = CustomerDAO.read_all()
-        
-        assert len(customers) == 59
 
+        assert len(customers) == 59
 
     def test_read_customer(self):
         customer = CustomerDAO.read(17)
@@ -23,7 +22,6 @@ class TestCustomerDAO:
 
 class TestEmployeeDAO:
     def test_read_all_employee(self):
-
         employee = EmployeeDAO.read_all()
 
         assert len(employee) == 8
