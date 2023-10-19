@@ -36,3 +36,20 @@ run-dev: activate
 cli: activate
 	@echo "[RUN]: run app cli"
 	$(INTERPRETER_DIR)/activate && python -i ./cli.py
+
+isort:
+	$(PYTHON) -m isort --check-only .
+
+black:
+	$(PYTHON) -m black --check .
+
+flake8:
+	$(PYTHON) -m flake8 .
+
+bandit:
+	$(PYTHON) -m bandit -r app
+
+lint: isort black flake8 bandit
+
+test:
+	$(PYTHON) -m pytest

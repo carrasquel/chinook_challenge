@@ -1,11 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from app.database import session, Customer
+"""Module documentation goes here
+   and here
+   and ...
+"""
+
+from app.database import Customer, session
 from app.serializers import to_dict
 
-class CustomerDAO:
 
+class CustomerDAO:
     columns = [
         "CustomerId",
         "FirstName",
@@ -18,12 +23,11 @@ class CustomerDAO:
         "PostalCode",
         "Phone",
         "Fax",
-        "Email"
+        "Email",
     ]
 
     @classmethod
     def read_all(cls, limit=None):
-        
         if not limit:
             return session.query(Customer).all()
 
@@ -41,7 +45,7 @@ class CustomerDAO:
         res = session.query(Customer).filter(query).limit(limit).all()
 
         return res
-    
+
     @classmethod
     def to_dict(cls, customer):
         res = {}
@@ -49,5 +53,5 @@ class CustomerDAO:
 
         for column in CustomerDAO.columns:
             res[column] = customer[column]
-        
+
         return res
