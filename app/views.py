@@ -15,3 +15,27 @@ from pyramid.view import view_config
 )
 def home(request):
     return Response('Welcome!')
+
+
+@view_config(
+    renderer='app:templates/base.mak',
+    route_name='album'
+)
+def album_view(request):
+    return {'a':'1'}
+
+
+@view_config(
+    renderer='app:templates/table.mak',
+    route_name='artist'
+)
+def artist_view(request):
+    return {'a':'1'}
+
+
+@view_config(
+    renderer='app:templates/base.mak',
+    route_name='customer'
+)
+def customer_view(request):
+    return {'a':'1'}
