@@ -1,23 +1,41 @@
 from app.dao import CustomerDAO, EmployeeDAO
 
 
-def test_read_all_customers():
-    customers = CustomerDAO.read_all()
-    
-    assert len(customers) == 59
+class TestCustomerDAO:
+    def test_read_all_customers(self):
+        customers = CustomerDAO.read_all()
+        
+        assert len(customers) == 59
 
 
-def test_read_customer():
-    customer = CustomerDAO.read(17)
+    def test_read_customer(self):
+        customer = CustomerDAO.read(17)
 
-    assert customer.FirstName == "Jack"
-    assert customer.LastName == "Smith"
-    assert customer.Email == "jacksmith@microsoft.com"
+        assert customer.FirstName == "Jack"
+        assert customer.LastName == "Smith"
+        assert customer.Email == "jacksmith@microsoft.com"
+
+    def test_filter_by_customer(self):
+        customers = CustomerDAO.filter_by("Country", "USA")
+
+        assert len(customers) == 13
 
 
+class TestEmployeeDAO:
+    def test_read_all_employee(self):
 
-def test_read_all_employee():
+        employee = EmployeeDAO.read_all()
 
-    employee = EmployeeDAO.read_all()
+        assert len(employee) == 8
 
-    assert len(employee) == 8
+    def test_read_employee(self):
+        employee = EmployeeDAO.read(5)
+
+        assert employee.FirstName == "Steve"
+        assert employee.LastName == "Johnson"
+        assert employee.Email == "steve@chinookcorp.com"
+
+    def test_filter_by_employee(self):
+        employee = EmployeeDAO.filter_by("City", "Calgary")
+
+        assert len(employee) == 5

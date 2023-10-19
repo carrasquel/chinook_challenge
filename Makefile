@@ -55,4 +55,4 @@ test:
 	$(PYTHON) -m pytest
 
 coverage:
-	$(PYTHON) -m pytest --cov=app
+	$(INTERPRETER_DIR)/activate && coverage report -m
