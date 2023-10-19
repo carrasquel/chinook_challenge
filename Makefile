@@ -29,11 +29,11 @@ deps: activate
 	$(INTERPRETER_DIR)/pip install -r ./requirements.txt
 	$(INTERPRETER_DIR)/pip install -r ./dev-requirements.txt
 
-run-dev: activate
+run-dev:
 	@echo "[RUN]: run development server"
-	python ./server.py
+	$(PYTHON) ./server.py
 
-cli: activate
+cli:
 	@echo "[RUN]: run app cli"
 	$(INTERPRETER_DIR)/activate && python -i ./cli.py
 
@@ -53,3 +53,6 @@ lint: isort black flake8 bandit
 
 test:
 	$(PYTHON) -m pytest
+
+coverage:
+	$(PYTHON) -m pytest --cov=app
