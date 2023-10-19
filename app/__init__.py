@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Module documentation goes here
-   and here
-   and ...
-"""
 from pyramid.config import Configurator
 
 from .database import *

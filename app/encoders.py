@@ -1,11 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-"""Module documentation goes here
-   and here
-   and ...
-"""
-
 import json
 
 from sqlalchemy.ext.declarative import DeclarativeMeta
