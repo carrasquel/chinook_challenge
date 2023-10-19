@@ -1,0 +1,4 @@
+pyramid==2.0.2
+Mako==1.2.4
+sqlalchemy==2.0.22
+pyramid_mako==1.1.0
