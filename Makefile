@@ -33,6 +33,6 @@ run-dev: activate
 	@echo "[RUN]: run development server"
 	python ./server.py
 
-cli:
+cli: activate
 	@echo "[RUN]: run app cli"
-	python -i ./cli.py
+	$(INTERPRETER_DIR)/activate && python -i ./cli.py
