@@ -32,3 +32,7 @@ deps: activate
 run-dev: activate
 	@echo "[RUN]: run development server"
 	python ./server.py
+
+cli:
+	@echo "[RUN]: run app cli"
+	python -i ./cli.py
