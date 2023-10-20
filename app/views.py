@@ -13,7 +13,6 @@ def home(request):
 
 @view_config(renderer="app:templates/table.mako", route_name="customer")
 def customer_view(request):
-
     res = CustomerDAO.read_all()
     res = [CustomerDAO.to_dict(item) for item in res]
     headers = []
@@ -28,6 +27,7 @@ def customer_view(request):
         "value": None,
         "table": "Customer",
     }
+
 
 @view_config(renderer="app:templates/table.mako", route_name="customer_filter")
 def customer_filter_view(request):
@@ -52,7 +52,6 @@ def customer_filter_view(request):
 
 @view_config(renderer="app:templates/table.mako", route_name="employee")
 def employee_view(request):
-
     res = EmployeeDAO.read_all()
     res = [EmployeeDAO.to_dict(item) for item in res]
     headers = []
