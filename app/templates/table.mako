@@ -69,14 +69,16 @@
 		evt.preventDefault();
 		const formData = new FormData(form);
 		const params = new URLSearchParams(formData);
-		var url = "/${table.lower()}?" + params.toString()
+		var column = params.get("filterColumn");
+		var value = params.get("filterValue");
+		var url = "/db/Chinook/${table}/" + column + "/" + value + ".html"
 		console.log(url.toString());
 		window.location.href = url;
 	});
 
 	document.getElementById("clearButton").onclick = function(e){
 		e.preventDefault();
-		window.location = "/${table.lower()}";    
+		window.location = "/db/Chinook/${table}.html";    
 	};
 </script>
 

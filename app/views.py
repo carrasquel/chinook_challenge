@@ -13,15 +13,28 @@ def home(request):
 
 @view_config(renderer="app:templates/table.mako", route_name="customer")
 def customer_view(request):
-    limit = request.params.get("limit")
-    filter_column = request.params.get("filterColumn")
-    filter_value = request.params.get("filterValue")
 
-    if filter_column and filter_value:
-        res = CustomerDAO.filter_by(filter_column, filter_value)
-    else:
-        res = CustomerDAO.read_all(limit)
+    res = CustomerDAO.read_all()
+    res = [CustomerDAO.to_dict(item) for item in res]
+    headers = []
 
+    if res:
+        headers = list(res[0].keys())
+
+    return {
+        "rows": res,
+        "headers": headers,
+        "column": None,
+        "value": None,
+        "table": "Customer",
+    }
+
+@view_config(renderer="app:templates/table.mako", route_name="customer_filter")
+def customer_filter_view(request):
+    filter_column = request.matchdict["column"]
+    filter_value = request.matchdict["value"]
+
+    res = CustomerDAO.filter_by(filter_column, filter_value)
     res = [CustomerDAO.to_dict(item) for item in res]
     headers = []
 
@@ -39,15 +52,29 @@ def customer_view(request):
 
 @view_config(renderer="app:templates/table.mako", route_name="employee")
 def employee_view(request):
-    limit = request.params.get("limit")
-    filter_column = request.params.get("filterColumn")
-    filter_value = request.params.get("filterValue")
 
-    if filter_column and filter_value:
-        res = EmployeeDAO.filter_by(filter_column, filter_value)
-    else:
-        res = EmployeeDAO.read_all(limit)
+    res = EmployeeDAO.read_all()
+    res = [EmployeeDAO.to_dict(item) for item in res]
+    headers = []
 
+    if res:
+        headers = list(res[0].keys())
+
+    return {
+        "rows": res,
+        "headers": headers,
+        "column": None,
+        "value": None,
+        "table": "Employee",
+    }
+
+
+@view_config(renderer="app:templates/table.mako", route_name="employee_filter")
+def employee_filter_view(request):
+    filter_column = request.matchdict["column"]
+    filter_value = request.matchdict["value"]
+
+    res = EmployeeDAO.filter_by(filter_column, filter_value)
     res = [EmployeeDAO.to_dict(item) for item in res]
     headers = []
 
