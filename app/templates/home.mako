@@ -17,12 +17,12 @@
             <p>Below are the available tables so far:</p>
             <ul>
                 <li>
-                    <a href="/customer">
+                    <a href="/db/Chinook/Customer.html">
                         Customer Table
                     </a>
                 </li>
                 <li>
-                    <a href="/employee">
+                    <a href="/db/Chinook/Employee.html">
                         Employee Table
                     </a>
                 </li>
